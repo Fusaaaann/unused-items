@@ -13,6 +13,8 @@ jobs:
       uses: conda-incubator/setup-miniconda@v2
       with:
         activate-environment: ${{ secrets.CONDA_ENV_NAME }}
+      env:
+        CONDA: ~/miniconda3
     - name: Install dependencies
       run: pip install -r requirements.txt
       shell: bash
