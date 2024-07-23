@@ -1,6 +1,9 @@
 #!/usr/bin/python
 import psycopg2
-conn = psycopg2.connect(database="wedorm", user="myfinal", password="cat_2333", host="192.168.0.107", port="5432") 
+import os
+from dotenv import load_dotenv
+load_dotenv()
+conn = psycopg2.connect(database=os.getenv("WEDORM_PG_NAME"), user=os.getenv("WEDORM_PG_USER"), password=os.getenv("WEDORM_PG_PASSWORD"), host=os.getenv("WEDORM_PG_HOST"), port=os.getenv("WEDORM_PG_PORT")) 
 # conn = psycopg2.connect(database="wedorm", user="myfinal", password="cat_2333", host="192.168.56.104", port="26000") 
 
 cur = conn.cursor()

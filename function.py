@@ -6,7 +6,10 @@ import psycopg2
 import logging
 from flask import session,redirect
 from functools import wraps
-            
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 logging.basicConfig(level = logging.INFO,format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
@@ -32,11 +35,12 @@ def create_conn():
     Returns:
         [type]: the psycopg2's connection object
     """
-    conn = psycopg2.connect(database="wedorm", 
-                            user="myfinal", 
-                            password="cat_2333", 
-                            host="192.168.0.107", 
-                            port="5432") 
+    conn = psycopg2.connect(database=os.getenv("WEDORM_PG_NAME"), 
+                            user=os.getenv("WEDORM_PG_USER"), 
+                            password=os.getenv("WEDORM_PG_PASSWORD"), 
+                            host=os.getenv("WEDORM_PG_HOST"), 
+                            port=os.getenv("WEDORM_PG_PORT")
+                            ) 
     return conn
 
 # insert 系列函数的返回值都是对应的id， 比如uid/sid/iid， 但是其他函数例如查询返回的是整个list，所以不要直接从前端调用这些基本函数
