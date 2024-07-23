@@ -3,7 +3,7 @@ import { useRouter } from "vue-router";
 import { dateToString, ItemInserted, ItemOwned, ItemToBorrow, BorrowSuggestion } from "./utils";
 
 
-async function make_request(url: string, data) {
+async function make_request(url: string, data:any) {
   const router = useRouter();
   let response = await axios({
     method:"POST",
@@ -16,12 +16,12 @@ async function make_request(url: string, data) {
       },
       ...data
     }),
-    transformRequest: [function (data, headers) {
+    transformRequest: [function (data:any, _) {
       // Do whatever you want to transform the data
       console.log('request',data)
       return data;
     }],
-    transformResponse: [function (data) {
+    transformResponse: [function (data:any) {
       // Do whatever you want to transform the data
       console.log('response',JSON.parse(data))
       return JSON.parse(data);
@@ -37,7 +37,7 @@ async function make_request(url: string, data) {
       // window.alert(error.response)
       if(error.response.status === 401){
         console.error('login',error)
-        window.alert('auth error ',error.response)
+        window.alert('auth error '+error.response)
         window.localStorage.removeItem('WEDORM-uid')
       router.push('/')
       }
@@ -114,7 +114,7 @@ export async function updateItem(item: ItemOwned) {
 }
 export async function searchItem(nm: string) {
 
-  let response = [];
+  let response:any[] = [];
   await make_request("/api/search-item", { name: nm }).then((res)=>{response = res})
   return response
   
