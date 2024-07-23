@@ -113,7 +113,7 @@ onBeforeMount(()=>{
     tableData.value = res;
     tagsRef.value = [];
     for(let item in tableData.value){
-      tagsRef.value.concat(item['tag'])
+      tagsRef.value.concat(item.tag)
     }
     })
 })
