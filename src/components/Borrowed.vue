@@ -96,7 +96,7 @@ const selected = ref<BorrowSuggestion>({
   owner_name:'' ,
   is_consume:false,
 })
-let timeout=2000
+let timeout: ReturnType<typeof setTimeout> | number = 2000
 watchEffect(async () => {
   // await searchItem(query_string.value).then((res)=>{options.value=res})
   searchItem(query_string.value).then((res)=>{
