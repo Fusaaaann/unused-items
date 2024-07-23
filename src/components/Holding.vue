@@ -109,7 +109,7 @@ const handleDelete = (index: number, row: ItemOwned) => {
 
 
 onBeforeMount(()=>{
-  itemsQuery().then((res)=>{
+  itemsQuery().then((res: ItemOwned)=>{
     tableData.value = res;
     tagsRef.value = [];
     for(let item in tableData.value){
