@@ -92,7 +92,7 @@ export async function itemsQuery(){
     
   await make_request("/api/items", {}).then((res)=>{
     console.log('itemsQuery response',res)
-    response = res});
+    response = JSON.parse(res)});
     return response
   }
   export async function borrowListQuery() {
