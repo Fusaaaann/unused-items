@@ -5,9 +5,10 @@ import { dateToString, ItemInserted, ItemOwned, ItemToBorrow, BorrowSuggestion }
 
 async function make_request(url: string, data:any) {
   const router = useRouter();
+  const baseURL = process.env.BACKEND_BASE_URL ?? "http://127.0.0.1:5000"
   let response = await axios({
     method:"POST",
-    baseURL:"http://127.0.0.1:5000",
+    baseURL:baseURL,
     url:url,
     // headers:{"Access-Control-Allow-Origin":"*"},
     data:JSON.stringify({
