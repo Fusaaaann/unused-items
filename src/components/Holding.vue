@@ -108,15 +108,15 @@ const handleDelete = (index: number, row: ItemOwned) => {
 
 
 
-onBeforeMount(()=>{
-  itemsQuery().then((res: ItemOwned)=>{
+onBeforeMount(() => {
+  itemsQuery().then((res: ItemOwned[]) => {
     tableData.value = res;
     tagsRef.value = [];
-    for(let item in tableData.value){
-      tagsRef.value.concat(item.tag)
+    for (let item of tableData.value) {
+      tagsRef.value = tagsRef.value.concat(item.tag);
     }
-    })
-})
+  });
+});
 
 const showEditor = ref(false)
 const isCreate = ref(true)
