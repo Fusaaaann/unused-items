@@ -13,7 +13,6 @@ jobs:
       uses: conda-incubator/setup-miniconda@v2
       with:
         activate-environment: ${{ secrets.CONDA_ENV_NAME }}
-        python-version: 3.10
     - name: Install dependencies
       run: pip install -r requirements.txt
       shell: bash
