@@ -19,4 +19,4 @@ jobs:
       run: pip install -r requirements.txt
       shell: bash
     - name: Deploy application
-      run:  systemctl restart unused-item-app-service
+      run:  sudo systemctl restart unused-item-app-service
